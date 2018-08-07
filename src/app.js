@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const familySelect = new FamilySelect(dropDown);
   familySelect.bindEvents();
 
+  const familyInfoContainer = document.querySelector(`#family-details`);
+  const familyDetails = new FamilyDetails(familyInfoContainer);
+  familyDetails.bindEvents();
+
   const instrumentFamilies = new InstrumentFamilies();
   instrumentFamilies.bindEvents();
 
