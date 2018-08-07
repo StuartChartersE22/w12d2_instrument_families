@@ -10,12 +10,12 @@ class FamilySelect {
   bindEvents(){
     PubSub.subscribe(`InstrumentFamilies:families-ready`, (evt) => {
       const families = evt.detail;
-      DropDownHelper.createOptions(this.displayContainer, families, `name`);
+      DropDownHelper.createOptions(this.displayContainer, families, `name`, `name`);
     });
 
     this.displayContainer.addEventListener(`change`, (evt) => {
-      const chosenFamilyIndex = evt.target.value;
-      PubSub.publish(`FamilySelect:family-chosen`, chosenFamilyIndex);
+      const chosenFamilyName = evt.target.value;
+      PubSub.publish(`FamilySelect:family-chosen`, chosenFamilyName);
     });
 
   };

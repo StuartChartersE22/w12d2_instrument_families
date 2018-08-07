@@ -36,8 +36,8 @@ class InstrumentFamilies {
     PubSub.publish(`InstrumentFamilies:families-ready`, this.instrumentFamilies);
 
     PubSub.subscribe(`FamilySelect:family-chosen`, (evt) => {
-      const familyIndex = evt.detail;
-      const family = DropDownHelper.selectOption(this.instrumentFamilies, familyIndex);
+      const familyName = evt.detail;
+      const family = DropDownHelper.selectOption(this.instrumentFamilies, familyName, `name`);
       PubSub.publish(`InstrumentFamilies:selected-family`, family);
     });
   };

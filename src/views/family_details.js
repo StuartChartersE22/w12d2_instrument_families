@@ -26,6 +26,8 @@ class FamilyDetails {
 
 };
 
+module.exports = FamilyDetails;
+
 function addFamilyName(family, container) {
   const name = document.createElement(`h2`);
   name.id = `family-name`;
@@ -51,5 +53,3 @@ function addInstrumentList(family, container) {
   }
   container.appendChild(instruments);
 };
-
-module.exports = FamilyDetails;
