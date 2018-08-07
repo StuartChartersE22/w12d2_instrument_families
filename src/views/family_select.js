@@ -14,11 +14,9 @@ class FamilySelect {
     });
 
     this.displayContainer.addEventListener(`change`, (evt) => {
-      const chosenFamilyIndex = evt.detail;
+      const chosenFamilyIndex = evt.target.value;
       PubSub.publish(`FamilySelect:family-chosen`, chosenFamilyIndex);
     });
-
-
 
   };
 

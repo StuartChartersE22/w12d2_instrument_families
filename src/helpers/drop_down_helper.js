@@ -2,13 +2,6 @@ const DropDownHelper = {
 
   createOptions: function(selectTagObject, options, displayAttribute, identifier=null) {
     if(identifier === null){
-
-      console.dir(options);
-      console.log('run');
-      // console.dir(selectTagObject);
-      // console.dir(displayAttribute);
-
-
       options.forEach((option, index) => {
         const selector = document.createElement(`option`);
         selector.textContent = option[displayAttribute];
@@ -23,9 +16,15 @@ const DropDownHelper = {
         selectTagObject.appendChild(selector);
       });
     }
+  },
+
+  selectOption: function (options, searchValue, parameter=null) {
+    if(parameter === null){
+      return options[searchValue];
+    }else {
+      return options.find(option => option[parameter] === searchValue);
+    }
   }
-
-
 
 };
 

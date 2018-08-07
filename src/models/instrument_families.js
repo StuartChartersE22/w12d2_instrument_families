@@ -1,4 +1,5 @@
-const PubSub = require(`../helpers/pub_sub.js`)
+const PubSub = require(`../helpers/pub_sub.js`);
+const DropDownHelper = require(`../helpers/drop_down_helper.js`);
 
 class InstrumentFamilies {
   constructor() {
@@ -33,6 +34,12 @@ class InstrumentFamilies {
 
   bindEvents(){
     PubSub.publish(`InstrumentFamilies:families-ready`, this.instrumentFamilies);
+
+    PubSub.subscribe(`FamilySelect:family-chosen`, (evt) => {
+      const familyIndex = evt.detail;
+      const family = DropDownHelper.selectOption(this.instrumentFamilies, familyIndex);
+      PubSub.publish(`InstrumentFamilies:selected-family`, family);
+    });
   };
 
 };
