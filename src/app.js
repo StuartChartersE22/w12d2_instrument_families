@@ -5,5 +5,11 @@ const FamilyDetails = require(`./views/family_details.js`);
 document.addEventListener('DOMContentLoaded', () => {
   console.log('JavaScript Loaded');
 
+  const dropDown = document.querySelector(`select#instrument-families`)
+  const familySelect = new FamilySelect(dropDown);
+  familySelect.bindEvents();
+
+  const instrumentFamilies = new InstrumentFamilies();
+  instrumentFamilies.bindEvents();
 
 });

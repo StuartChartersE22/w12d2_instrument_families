@@ -32,7 +32,7 @@ class InstrumentFamilies {
   };
 
   bindEvents(){
-
+    PubSub.publish(`InstrumentFamilies:families-ready`, this.instrumentFamilies);
   };
 
 };

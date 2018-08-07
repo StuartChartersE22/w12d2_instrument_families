@@ -1,4 +1,5 @@
 const PubSub = require(`../helpers/pub_sub.js`)
+const DropDownHelper = require(`../helpers/drop_down_helper.js`)
 
 class FamilySelect {
 
@@ -7,8 +8,20 @@ class FamilySelect {
   };
 
   bindEvents(){
+    PubSub.subscribe(`InstrumentFamilies:families-ready`, (evt) => {
+      const families = evt.detail;
+      DropDownHelper.createOptions(this.displayContainer, families, `name`);
+    });
+
+    this.displayContainer.addEventListener(`change`, (evt) => {
+      const chosenFamilyIndex = evt.detail;
+      PubSub.publish(`FamilySelect:family-chosen`, chosenFamilyIndex);
+    });
+
+
 
   };
+
 
 };
 
