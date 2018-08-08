@@ -46,7 +46,8 @@ function addFamilyDescription(family, container) {
 function addInstrumentList(family, container) {
   const instruments = document.createElement(`ul`);
   ListHelper.create(family.instruments, instruments, (instrument) => {
-    listItem.textContent = instrument;
+    const content = document.createElement(`p`);
+    content.textContent = instrument;
   });
   instruments.classList.add(`instruments`)
   container.appendChild(instruments);
