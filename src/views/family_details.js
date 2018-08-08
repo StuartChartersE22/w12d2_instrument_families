@@ -1,4 +1,5 @@
 const PubSub = require(`../helpers/pub_sub.js`)
+const ListHelper = require(`../helpers/list_helper.js`)
 
 class FamilyDetails {
 
@@ -44,12 +45,9 @@ function addFamilyDescription(family, container) {
 
 function addInstrumentList(family, container) {
   const instruments = document.createElement(`ul`);
-  instruments.id = `insturment-list`;
-  for (let instrument of family.instruments){
-    const listItem = document.createElement(`li`);
-    listItem.classList.add(`instrument`);
+  ListHelper.create(family.instruments, instruments, (instrument) => {
     listItem.textContent = instrument;
-    instruments.appendChild(listItem);
-  }
+  });
+  instruments.classList.add(`instruments`)
   container.appendChild(instruments);
 };
